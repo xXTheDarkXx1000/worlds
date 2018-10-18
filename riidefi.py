@@ -13,9 +13,11 @@ Clientdiscord = discord.Client()
 
 
 @client.event
-async def on_message(message):
-    source_message = ".."
-    searched = re.search(r"!!give.*riidefi.*(\d.*)", source_message)
-    if searched and searched.group(0):
-        send_message("Thanks, %s for $%s!" % (sender.name, searched.group(0)))
+    if message.content.startswith('!!give-money @riidefi#4002'):
+        await client.send_message(message.channel,'Hey Thanks for giving me (\d.*) <@%s>!'  %(message.author.id))
+    if message.content.startswith('!!give-money riidefi#4002'):
+        await client.send_message(message.channel,'Hey Thanks for giving me (\d.*) <@%s>!'  %(message.author.id))
+    if message.content.startswith('!!give-money riidefi'):
+        await client.send_message(message.channel,'Hey Thanks for giving me (\d.*) <@%s>!'  %(message.author.id))
 client.run('NTAxNDUwODAzOTY2Mzc3OTk0.DqZnmA.C0Q-jEFZRLoz0B90g2ZBBQAHa0A')
+
